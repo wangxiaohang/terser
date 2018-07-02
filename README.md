@@ -44,7 +44,7 @@ Terser可以接收多个入口文件，推荐首先传入入口文件，之后�
                                 `--help options` 关于可用选项的详细信息。
     -V, --version               打印版本号
     -p, --parse <options>       指定解析器选项:
-                                `acorn` 使用Acorn解析.
+                                `acorn` 使用Acorn解析。
                                 `bare_returns`  Allow return outside of functions.
                                                 Useful when minifying CommonJS
                                                 modules and Userscripts that may
@@ -54,13 +54,11 @@ Terser可以接收多个入口文件，推荐首先传入入口文件，之后�
                                               a program (for parsing JSON).
                                 `spidermonkey`  Assume input files are SpiderMonkey
                                                 AST format (as JSON).
-    -c, --compress [options]    Enable compressor/specify compressor options:
-                                `pure_funcs`  List of functions that can be safely
-                                              removed when their return values are
-                                              not used.
-    -m, --mangle [options]      Mangle names/specify mangler options:
-                                `reserved`  List of names that should not be mangled.
-    --mangle-props [options]    Mangle properties/specify mangler options:
+    -c, --compress [options]    允许压缩/指定压缩选项：
+                                `pure_funcs`  列出可以被安全删除的函数，他们的返回值不会被用到。
+    -m, --mangle [options]      混淆名称/指定混淆选项：
+                                `reserved`  列出应该被混淆的名称。
+    --mangle-props [options]    混淆属性/指定混淆选项：
                                 `builtins`  Mangle property names that overlaps
                                             with standard JavaScript globals.
                                 `debug`  Add debug prefix and suffix.
