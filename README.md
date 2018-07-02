@@ -1,42 +1,37 @@
 terser
 ======
 
-A JavaScript parser, mangler/compressor and beautifier toolkit for ES6+.
+一个针对ES6+的Javascript解析器，混淆/压缩和美化工具。
 
 
-Why choose terser?
+为什么选择terser？
 ------------------
 
-`uglify-es` is no longer maintained and `uglify-js` does not support ES6+.
+`uglify-es` 不再维护，`uglify-js`不支持ES6+。
 
-**`terser`** is a fork of `uglify-es` that retains API and CLI compatibility
-with `uglify-es` and `uglify-js@3`.
+**`terser`** 是 `uglify-es`的分支，API和CLI命令行保持了与`uglify-es`和`uglify-js@3`的兼容性。
 
-Install
+安装
 -------
 
-First make sure you have installed the latest version of [node.js](http://nodejs.org/)
-(You may need to restart your computer after this step).
+首先确保安装了最新版本的 [node.js](http://nodejs.org/)
+(这一步之后可能需要重启电脑).
 
-From NPM for use as a command line app:
+通过NPM以命令行的方式使用：
 
     npm install terser -g
 
-From NPM for programmatic use:
+通过NPM做为程序运行：
 
     npm install terser
     
-# Command line usage
+# 命令行用法
 
     terser [input files] [options]
 
-Terser can take multiple input files.  It's recommended that you pass the
-input files first, then pass the options.  Terser will parse input files
-in sequence and apply any compression options.  The files are parsed in the
-same global scope, that is, a reference from a file to some
-variable/function declared in another file will be matched properly.
+Terser可以接收多个入口文件，推荐首先传入入口文件，之后传入options选项。Terser会应用所有的压缩选项，按顺序解析入口文件。这些文件被在同一个全局命名空间中解析，也就是说，在一个文件中声明的变量、函数，在另一个文件中也可以引用。
 
-If no input file is specified, Terser will read from STDIN.
+如果没有入口文件，Terser会从STDIN中读取。
 
 If you wish to pass your options before the input files, separate the two with
 a double dash to prevent input files being used as option arguments:
