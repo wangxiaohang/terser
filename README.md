@@ -33,19 +33,18 @@ Terser可以接收多个入口文件，推荐首先传入入口文件，之后�
 
 如果没有入口文件，Terser会从STDIN中读取。
 
-If you wish to pass your options before the input files, separate the two with
-a double dash to prevent input files being used as option arguments:
+如果希望在入口文件之前传递选项，通过两个横杠来进行指定，避免入口文件被当作选项参数：
 
     terser --compress --mangle -- input.js
 
-### Command line options
+### 命令行选项
 
 ```
-    -h, --help                  Print usage information.
-                                `--help options` for details on available options.
-    -V, --version               Print version number.
-    -p, --parse <options>       Specify parser options:
-                                `acorn`  Use Acorn for parsing.
+    -h, --help                  打印用法信息。
+                                `--help options` 关于可用选项的详细信息。
+    -V, --version               打印版本号
+    -p, --parse <options>       指定解析器选项:
+                                `acorn` 使用Acorn解析.
                                 `bare_returns`  Allow return outside of functions.
                                                 Useful when minifying CommonJS
                                                 modules and Userscripts that may
@@ -146,38 +145,34 @@ a double dash to prevent input files being used as option arguments:
                                 when included in, say, a browser.
 ```
 
-Specify `--output` (`-o`) to declare the output file.  Otherwise the output
-goes to STDOUT.
+通过指定 `--output` (`-o`) 来声明出口文件。  否则将会输出到STDOUT。
 
-## CLI source map options
+## CLI源映射选项
 
-Terser can generate a source map file, which is highly useful for
-debugging your compressed JavaScript.  To get a source map, pass
-`--source-map --output output.js` (source map will be written out to
+Terser可以生成一个源映射文件, 对于调试压缩后的js代码很有用。 通过命令
+`--source-map --output output.js`获得源文件 (源文件会被输出到
 `output.js.map`).
 
-Additional options:
+其他选项：
 
-- `--source-map "filename='<NAME>'"` to specify the name of the source map.
+- `--source-map "filename='<NAME>'"` 指定源映射的名字。
 
-- `--source-map "root='<URL>'"` to pass the URL where the original files can be found.
+- `--source-map "root='<URL>'"` 指定原始文件的URL。
 
-- `--source-map "url='<URL>'"` to specify the URL where the source map can be found.
-  Otherwise Terser assumes HTTP `X-SourceMap` is being used and will omit the
-  `//# sourceMappingURL=` directive.
+- `--source-map "url='<URL>'"` 指定源文件的RUL。
+  否则Terser假定用的是HTTP `X-SourceMap` 并且会忽略指令
+  `//# sourceMappingURL=` 。
 
-For example:
+例如：
 
     terser js/file1.js js/file2.js \
              -o foo.min.js -c -m \
              --source-map "root='http://foo.com/src',url='foo.min.js.map'"
 
-The above will compress and mangle `file1.js` and `file2.js`, will drop the
-output in `foo.min.js` and the source map in `foo.min.js.map`.  The source
-mapping will refer to `http://foo.com/src/js/file1.js` and
-`http://foo.com/src/js/file2.js` (in fact it will list `http://foo.com/src`
-as the source map root, and the original files as `js/file1.js` and
-`js/file2.js`).
+以上代码会混淆压缩 `file1.js` 和 `file2.js`, 并输出到 `foo.min.js` 源文件输出到 `foo.min.js.map`.  源文件将会映射到 `http://foo.com/src/js/file1.js` 和
+`http://foo.com/src/js/file2.js` (实际上会列出 `http://foo.com/src`
+作为源映射根路径, 和 `js/file1.js` 、
+`js/file2.js`作为原始文件).
 
 ### Composed source map
 
